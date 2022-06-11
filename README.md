@@ -40,8 +40,9 @@ Also described [here](https://github.com/moby/moby/issues/8795)
 If you know of a better solution, please share.
 
 #Caveat
-When the server is running, any modifications to the nfset.conf file must be done after the container is stopped or removed.
-like this:
+When the server is running, any modifications to the nfset.conf file must be done after the container has been stopped or removed.
+
+like this
 
 ```
 docker compose down 
@@ -49,4 +50,8 @@ docker compose down
 edit nfsen.conf
 ```
 docker compose up -d
+```
+and ***remember***
+```
+conntrack -D -p udp
 ```
