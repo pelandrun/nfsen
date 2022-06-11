@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  app:
+    image: bogus/test
+    volumes:
+      - ./nfsen.conf:/nfsen.conf.ext
+      - ./profiles-data:/profiles-data
+      - ./profiles-stat:/profiles-stat
+# uncomment following line if you wan logs, i was unable to get console logs working
+#      - /dev/log:/dev/log
+    ports:
+      - "80:80/tcp"
+      - "9995-9996:9995-9996/udp"
+      
+networks:
+  default:
+    name: nfsen_net
+
+# remember execute 
+# conntrack -D -p udp
+
